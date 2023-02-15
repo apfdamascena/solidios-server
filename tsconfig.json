@@ -1,0 +1,61 @@
+{
+    "compilerOptions": {
+       "lib": [
+          "ESNext"
+       ],
+       "module": "commonjs",
+       "moduleResolution": "node",
+       "pretty": true,
+       "sourceMap": true,
+       "target": "ESNext",
+       "outDir": "./dist",
+       "rootDir": "./src",
+       "strict": true,
+       "skipLibCheck": true,
+       "strictPropertyInitialization": false,
+       "esModuleInterop": true,
+       "forceConsistentCasingInFileNames": true,
+       "emitDecoratorMetadata": true,
+       "experimentalDecorators": true,
+       "removeComments": true,
+       "allowSyntheticDefaultImports": true,
+       "baseUrl": "./",
+       "typeRoots": [
+          "./node_modules/@types",
+          "./src/@types"
+       ],
+       "paths": {
+          "@controllers": [
+             "./src/controllers/index.ts"
+          ],
+          "@models": [
+             "./src/models/index.ts"
+          ],
+          "@routes": [
+             "./src/routes/index.ts"
+          ],
+          "@repositories": [
+             "./src/repositories/index.ts"
+          ],
+          "@middlewares": [
+             "./src/middlewares/index.ts"
+          ],
+          "@utils": [
+             "./src/utils/index.ts"
+          ],
+          "@config": [
+             "./src/config/index.ts"
+          ],
+          "@docs": [
+             "./src/docs/index.ts"
+          ],
+          "@services": [
+             "./src/services/coc.ts"
+          ]
+       }
+    },
+    "include": [
+       "src/**/*.ts",
+       "src/config/multer.ts",
+    ],
+ }

@@ -1,0 +1,44 @@
+version: "3"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: node:lts-alpine
+    container_name: atada-server
+    restart: always
+    env_file: .env
+    ports:
+      - "${PORT}:3001"
+      - "9229:9229"
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    command: yarn dev --
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    container_name: atada-db
+    restart: always
+    env_file: .env
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_DB}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "${DATABASE_PORT}:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgres/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  pgdata:
+  node_modules:
